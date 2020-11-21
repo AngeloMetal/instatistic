@@ -7,4 +7,5 @@ This software promises you useful and deep statistical information from your ins
 3) You extract the messages.json file from one of the zip files.
 4) You import it on instatistic and voila! Here you go.
 
+*This is a very early version of the software.*
 *(At the moment only messages' statistics can be analyzed)*
