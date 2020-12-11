@@ -100,9 +100,9 @@
             this.header.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.header.Location = new System.Drawing.Point(268, 40);
             this.header.Name = "header";
-            this.header.Size = new System.Drawing.Size(260, 26);
+            this.header.Size = new System.Drawing.Size(284, 26);
             this.header.TabIndex = 6;
-            this.header.Text = "Statistics of your account:";
+            this.header.Text = "Statistics of your messages:";
             // 
             // totalMessagesReceived
             // 

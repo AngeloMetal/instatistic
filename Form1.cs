@@ -22,6 +22,7 @@ namespace WindowsFormsApp2
     {
 
         public string username = "";
+        public string messages_json_saved = "";
         int SentMessages_count = 0;
         int ReceivedMessages_count = 0;
         int SentPosts_count = 0;
@@ -60,18 +61,36 @@ namespace WindowsFormsApp2
 
         private void choosefile_Click(object sender, EventArgs e)
         {
+            username = "";
+            messages_json_saved = "";
+            SentMessages_count = 0;
+            ReceivedMessages_count = 0;
+            SentPosts_count = 0;
+            ReceivedPosts_count = 0;
+            Videocalls_count = 0;
+            DMcontacts_count = 0;
+            Sentlikes_count = 0;
+            Receivedlikes_count = 0;
+
+  
+            uSentMessages_count = 0;
+            uReceivedMessages_count = 0;
+            uSentPosts_count = 0;
+            uReceivedPosts_count = 0;
+            uVideocalls_count = 0;
+            uSentlikes_count = 0;
+            uReceivedlikes_count = 0;
+    
+
             progressBar1.Value = 0;
+            string directory = System.Environment.GetEnvironmentVariable("USERPROFILE") + "\\AppData\\Roaming\\instatistic";
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            
-
-            
-
             openFileDialog1.InitialDirectory = "c:\\";
             openFileDialog1.Filter = "JSON files (*.json)|*.json;";
             openFileDialog1.FilterIndex = 0;
             openFileDialog1.RestoreDirectory = true;
 
-            string fileName = System.Environment.GetEnvironmentVariable("USERPROFILE") + "\\AppData\\Local\\instatistic\\username.txt";
+            string fileName = System.Environment.GetEnvironmentVariable("USERPROFILE") + "\\AppData\\Roaming\\instatistic\\username.txt";
 
             if (File.Exists(fileName))
             {
@@ -87,11 +106,16 @@ namespace WindowsFormsApp2
                 mediaownersTextbox.Visible = true;
 
                 string FileText = File.ReadAllText(openFileDialog1.FileName);
-                string messages_json_saved = System.Environment.GetEnvironmentVariable("USERPROFILE") + "\\AppData\\Local\\instatistic\\messages_json_saved.txt";
+                messages_json_saved = System.Environment.GetEnvironmentVariable("USERPROFILE") + "\\AppData\\Roaming\\instatistic\\messages_json_saved.txt";
                 if (File.Exists(messages_json_saved))
                 {
                     File.Delete(messages_json_saved);
                 }
+                if (!Directory.Exists(directory))
+                {
+                    Directory.CreateDirectory(directory);
+                }
+
                 FileStream fs = File.Create(messages_json_saved);
                 Byte[] txt = new UTF8Encoding(true).GetBytes(FileText);
                 fs.Write(txt, 0, txt.Length);
@@ -245,7 +269,7 @@ namespace WindowsFormsApp2
             uReceivedlikes_count = 0;
 
            
-            string json_content = System.Environment.GetEnvironmentVariable("USERPROFILE") + "\\AppData\\Local\\instatistic\\messages_json_saved.txt"; 
+            string json_content = File.ReadAllText(System.Environment.GetEnvironmentVariable("USERPROFILE") + "\\AppData\\Roaming\\instatistic\\messages_json_saved.txt");
             dynamic json = JsonConvert.DeserializeObject(json_content);
             
 

@@ -19,7 +19,7 @@ namespace WindowsFormsApp2
         public Home()
         {
             InitializeComponent();
-            string fileName = System.Environment.GetEnvironmentVariable("USERPROFILE") + "\\AppData\\Local\\instatistic\\username.txt";
+            string fileName = System.Environment.GetEnvironmentVariable("USERPROFILE") + "\\AppData\\Roaming\\instatistic\\username.txt";
             if (File.Exists(fileName))
             {
                 usernameField.Text = File.ReadAllText(fileName);
@@ -44,8 +44,8 @@ namespace WindowsFormsApp2
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string fileName = System.Environment.GetEnvironmentVariable("USERPROFILE") + "\\AppData\\Local\\instatistic\\username.txt";
-            string directory = System.Environment.GetEnvironmentVariable("USERPROFILE") + "\\AppData\\Local\\instatistic";
+            string fileName = System.Environment.GetEnvironmentVariable("USERPROFILE") + "\\AppData\\Roaming\\instatistic\\username.txt";
+            string directory = System.Environment.GetEnvironmentVariable("USERPROFILE") + "\\AppData\\Roaming\\instatistic";
             
 
             if (Directory.Exists(directory))
@@ -74,6 +74,13 @@ namespace WindowsFormsApp2
 
         private void button2_Click(object sender, EventArgs e)
         {
+            /*
+            ChooseJSON ChooseJSON = new ChooseJSON();
+            ChooseJSON.Show();
+            ChooseJSON.Location = this.Location;
+            this.Hide();
+            */
+
             Form1 form1 = new Form1();
             form1.Show();
             form1.Location = this.Location;
